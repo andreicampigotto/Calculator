@@ -30,26 +30,20 @@ export default class Calculator extends Component{
     setOperation(operation){
         if(this.state.current === 0){
             this.setState({operation, current:1, clearDisplay:true})
-            console.log(current)
-        }else{
-            
-            const equals = operation === '='
-            const currentOperation = this.set.operation
-            console.log(values)
 
-            const values = [...this.set.values]
+        }else{
             console.log(operation)
+            const equals = operation === '='
+            const currentOperation = this.state.operation
+        
+            const values = [...this.state.values]
             try{
 
                 values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
-                console.log(values)
 
             }catch(e){
                 values[0] = this.state.values[0]
-                console.log(values)
-
             }
-            console.log(values)
 
             values[1] = 0
 
@@ -64,6 +58,7 @@ export default class Calculator extends Component{
     }
 
     addDigit(n){
+        console.log(n)
         if(n ==='.' && this.state.displayValue.includes('.')){
             return
         }
